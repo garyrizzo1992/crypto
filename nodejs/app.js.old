@@ -1,0 +1,15 @@
+const methods = require("./methods")
+
+//AccountID
+var accountid = 0
+methods.accounts()
+await accounts().then((result) => {
+  accountid = result
+}).catch((error) => {
+  console.log('Error!', error)
+})
+
+var arr = []
+
+console.log("running create()")
+create()

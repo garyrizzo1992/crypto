@@ -1,0 +1,12 @@
+---
+# tasks file for pi
+
+- name: add startup boot (https://raspberrypi.stackexchange.com/questions/69204/open-chromium-full-screen-on-start-up)
+  lineinfile: dest=/etc/xdg/lxsession/LXDE-pi/autostart search_string='{{ item }}' line='{{ item }}' state=present
+  with_items:
+    - '@xset s off'
+    - '@xset -dpms'
+    - '@xset s noblank'
+    - '@chromium-browser --kiosk https://coinmarketcap.com/  # load chromium after boot and open the website in full screen mode'
+  notify:
+    - reboot
